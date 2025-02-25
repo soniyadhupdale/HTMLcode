@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diet Planner</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+            background-color: #f8f8f8;
+        }
+        header {
+            background-color: #fff;
+            padding: 15px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        header h1 {
+            margin: 0;
+            font-size: 24px;
+        }
+        nav {
+            margin-top: 10px;
+        }
+        nav a {
+            margin: 0 15px;
+            text-decoration: none;
+            color: black;
+            font-weight: bold;
+        }
+        .container {
+            padding: 50px;
+        }
+        h2 {
+            color: #333;
+        }
+        .form-group {
+            margin: 15px 0;
+        }
+        .form-group input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .btn {
+            padding: 10px 20px;
+            border: none;
+            background-color: #007BFF;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        .btn:disabled {
+            background-color: #ccc;
+        }
+        .login-signup {
+            margin-top: 20px;
+        }
+        .login-signup a {
+            color: #007BFF;
+            text-decoration: none;
+        }
+        .features {
+            display: flex;
+            justify-content: space-around;
+            padding: 50px;
+            background-color: #fff;
+            margin-top: 30px;
+        }
+        .feature {
+            width: 30%;
+            text-align: center;
+        }
+        .feature img {
+            width: 100px;
+            height: 100px;
+        }
+        .contact {
+            padding: 50px;
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Diet Planner</h1>
+        <nav>
+            <a href="#">Home</a>
+            <a href="#">My Plan</a>
+            <a href="#">Food Tracker</a>
+            <a href="#">Recipes</a>
+        </nav>
+    </header>
+
+    <div class="container">
+        <h2>Your Personalized Diet Plan</h2>
+        <p>Start your healthy eating journey today! Track meals, monitor calories, and discover recipes.</p>
+        
+        <h3>Register</h3>
+        <form id="register-form">
+            <div class="form-group">
+                <input type="text" id="username" placeholder="Username" required>
+            </div>
+            <div class="form-group">
+                <input type="email" id="email" placeholder="Email" required>
+            </div>
+            <div class="form-group">
+                <input type="password" id="password" placeholder="Password" required>
+            </div>
+            <div class="form-group">
+                <input type="password" id="confirm-password" placeholder="Confirm Password" required>
+            </div>
+            <button type="submit" class="btn" id="register-btn" disabled>Register</button>
+        </form>
+
+        <div class="login-signup">
+            <p>Already have an account? <a href="#">Login</a></p>
+            <p>Don't have an account? <a href="#">Sign Up</a></p>
+        </div>
+    </div>
+
+    <div class="features">
+        <div class="feature">
+            <img src="https://via.placeholder.com/100" alt="Track Meals">
+            <h3>Track Meals</h3>
+            <p>Easily log your meals and track calories with our intuitive tool.</p>
+        </div>
+        <div class="feature">
+            <img src="https://via.placeholder.com/100" alt="Calorie Counter">
+            <h3>Calorie Counter</h3>
+            <p>Keep track of your daily calories and stay on target with your goals.</p>
+        </div>
+        <div class="feature">
+            <img src="https://via.placeholder.com/100" alt="Healthy Recipes">
+            <h3>Healthy Recipes</h3>
+            <p>Find delicious and healthy recipes to make your diet plan more enjoyable!</p>
+        </div>
+    </div>
+
+    <div class="contact">
+        <h2>Contact Us</h2>
+        <p>If you have any questions, feel free to reach out to us:</p>
+        <p>Mobile: +123 456 789</p>
+        <p>Email: support@dietplanner.com</p>
+        <p>© 2025 Diet Planner. All Rights Reserved.</p>
+    </div>
+
+    <script>
+        // Enable Register button only if all fields are filled and passwords match
+        document.addEventListener("input", function () {
+            const username = document.getElementById("username").value;
+            const email = document.getElementById("email").value;
+            const password = document.getElementById("password").value;
+            const confirmPassword = document.getElementById("confirm-password").value;
+            const registerBtn = document.getElementById("register-btn");
+
+            if (username && email && password && confirmPassword && password === confirmPassword) {
+                registerBtn.disabled = false;
+            } else {
+                registerBtn.disabled = true;
+            }
+        });
+    </script>
+
+</body>
+</html>
