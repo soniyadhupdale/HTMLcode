@@ -1,0 +1,60 @@
+<?php
+session_start();
+
+$showForm = true;
+$loginError = "";
+
+// Check if already logged in
+if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true) {
+    $showForm = false;
+}
+
+// Handle form submission
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $username = $_POST['username'];
+    $password = $_POST['password'];
+
+    // Hardcoded login credentials
+    $correctUsername = "admin";
+    $correctPassword = "admin123";
+
+    if ($username === $correctUsername && $password === $correctPassword) {
+        $_SESSION['loggedin'] = true;
+        $_SESSION['username'] = $username;
+        $showForm = false;
+    } else {
+        $loginError = "Invalid username or password!";
+    }
+}
+
+// Handle logout
+if (isset($_GET['logout'])) {
+    session_destroy();
+    header("Location: login_system.php");
+    exit();
+}
+?>
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Simple Login System</title>
+</head>
+<body>
+
+<?php if ($showForm): ?>
+    <h2>Login</h2>
+    <form method="POST" action="">
+        Username: <input type="text" name="username" required><br><br>
+        Password: <input type="password" name="password" required><br><br>
+        <input type="submit" value="Login">
+    </form>
+    <p style="color:red;"><?php echo $loginError; ?></p>
+<?php else: ?>
+    <h1>Welcome, <?php echo $_SESSION['username']; ?>!</h1>
+    <p>You are now logged in.</p>
+    <a href="?logout=true">Logout</a>
+<?php endif; ?>
+
+</body>
+</html>
