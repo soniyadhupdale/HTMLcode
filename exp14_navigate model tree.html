@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>DOM Elements Manipulation</title>
+    <style>
+        #myBox {
+            padding: 10px;
+            border: 2px solid black;
+            margin-bottom: 10px;
+            width: 300px;
+            background-color: white;
+        }
+        button {
+            display: block;
+            margin: 5px;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>DOM Elements Manipulation</h2>
+
+    <div id="myBox">Text has not been changed.</div>
+
+    <button onclick="changeText()">Change Text</button>
+    <button onclick="changeStyle()">Change Style</button>
+    <button onclick="addElement()">Add Element</button>
+    <button onclick="removeElement()">Remove Element</button>
+    <button onclick="replaceElement()">Replace Element</button>
+
+    <script>
+        function changeText() {
+            document.getElementById("myBox").innerText = "Text has been changed!";
+        }
+
+        function changeStyle() {
+            let box = document.getElementById("myBox");
+            box.style.backgroundColor = "lightblue";
+            box.style.color = "darkred";
+            box.style.fontSize = "18px";
+        }
+
+        function addElement() {
+            let para = document.createElement("p");
+            para.innerText = "New paragraph added.";
+            para.id = "newPara";
+            document.body.appendChild(para);
+        }
+
+        function removeElement() {
+            let para = document.getElementById("newPara");
+            if (para) para.remove();
+        }
+
+        function replaceElement() {
+            let old = document.getElementById("myBox");
+            let newDiv = document.createElement("div");
+            newDiv.id = "myBox";
+            newDiv.innerText = "Element has been replaced!";
+            newDiv.style.padding = "10px";
+            newDiv.style.border = "2px solid black";
+            newDiv.style.width = "300px";
+            newDiv.style.marginBottom = "10px";
+            old.parentNode.replaceChild(newDiv, old);
+        }
+    </script>
+
+</body>
+</html>
