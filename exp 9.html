@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>User Information Form</title>
+    <style>
+        body {
+            font-family: Arial;
+            margin: 50px;
+        }
+        .form-box {
+            border: 1px solid #ccc;
+            padding: 20px;
+            width: 300px;
+        }
+        .form-box input[type="text"],
+        .form-box input[type="email"],
+        .form-box input[type="number"] {
+            width: 100%;
+            padding: 8px;
+            margin: 8px 0;
+        }
+        .form-box input[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+            border: none;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+
+<?php
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    // Collecting form data
+    $name = htmlspecialchars($_POST["name"]);
+    $email = htmlspecialchars($_POST["email"]);
+    $age = htmlspecialchars($_POST["age"]);
+    $place = htmlspecialchars($_POST["place"]);
+
+    // Simple validation
+    if (empty($name) || empty($email) || empty($age) || empty($place)) {
+        echo "<p style='color:red;'>Please fill in all the fields.</p>";
+    } else {
+        // Display result
+        echo "<h3>Thank you, $name!</h3>";
+        echo "Your email is <strong>$email</strong>, you are <strong>$age</strong> years old, and you are from <strong>$place</strong>.";
+    }
+}
+?>
+
+<h2>Simple User Info Form</h2>
+<div class="form-box">
+    <form method="post" action="">
+        <label for="name">Name:</label><br>
+        <input type="text" name="name"><br>
+
+        <label for="email">Email:</label><br>
+        <input type="email" name="email"><br>
+
+        <label for="age">Age:</label><br>
+        <input type="number" name="age"><br>
+
+        <label for="place">Place:</label><br>
+        <input type="text" name="place"><br>
+
+        <input type="submit" value="Submit">
+    </form>
+</div>
+
+</body>
+</html>
